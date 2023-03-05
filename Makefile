@@ -74,7 +74,7 @@ get-kubeconfig:
 	k3d kubeconfig write $(K3D_CLUSTER_NAME)
 
 get-k9s:
-	docker run --rm -it --network host -v $KUBECONFIG:/root/.kube/config quay.io/derailed/k9s
+	docker run --rm -it --network host -v $(KUBECONFIG):/root/.kube/config quay.io/derailed/k9s
 
 cluster-exec-server:
 	docker exec -it k3d-$(K3D_CLUSTER_NAME)-server-0 /bin/bash
