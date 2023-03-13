@@ -26,12 +26,6 @@
   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
   ```
 
-- [Tilt](https://tilt.dev/)
-
-  ```bash
-  curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
-  ```
-
 - [Kustomize](https://kustomize.io/)
 
   ```bash
