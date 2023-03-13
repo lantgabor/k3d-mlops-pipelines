@@ -33,3 +33,23 @@
 
   mv kustomize /usr/local/bin
   ```
+
+# Kubeflow install
+
+## Install
+
+1. **Ubuntu 22.04:**
+
+   :warning: Known bug: Make sure to have enough file descriptors for open files, if you get this error: Too many open files in the logs. Fix: [Configuring Linux for Many Watch Folders](https://www.ibm.com/docs/en/aspera-on-demand/3.9?topic=line-configuring-linux-many-watch-folders)
+
+1. Clone and install: [kubeflow/manifests](https://github.com/kubeflow/manifests)
+
+   ```bash
+   while ! kustomize build example | awk '!/well-defined/' | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
+   ```
+
+   :warning: `Kustomize 5.0` has been fixed by #2399 Mar 13, 2023
+
+## Add ingress
+
+To reach the istio service gateway on localhost that forwards the traffic of the kubeflow gui we need to add an ingress to the cluster. By default k3d is configured with `traefik` ingress controller. [Exposing services](https://k3d.io/v5.4.6/usage/exposing_services/)
