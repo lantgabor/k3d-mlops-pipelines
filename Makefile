@@ -1,3 +1,5 @@
+SHELL=/usr/bin/bash
+
 .PHONY: up
 .PHONY: down
 .PHONY: build
@@ -8,22 +10,25 @@
 # K3D_VERSION ?= 5.4.6 
 # K3D_BIN_URL = https://github.com/k3d-io/k3d/releases/download/$(K3D_VERSION)/k3d-linux-amd64
 
+# k3d variables
 K3D_CLUSTER_NAME ?= dev-cluster
 K3D_SERVERS ?= 1
 K3D_AGENTS ?= 1
 K3D_API_PORT ?= 6510
 K3D_EXPOSE_PORT ?= 8090
 
+# Registry variables
 K3D_REGISTRY_NAME ?= dev-registry
 K3D_REGISTRY_PORT ?= 6502
 
 # replace + with -, if needed
 K3S_TAG ?= v1.23.8-k3s1
+NVIDIA_CONTAINER_RUNTIME_VERSION ?= 3.12.0-1
+
 IMAGE_REPOSITORY ?= rancher/k3s
 IMAGE_TAG ?= $(K3S_TAG)-cuda
 IMAGE ?= k3d-$(K3D_REGISTRY_NAME).localhost:$(K3D_REGISTRY_PORT)/$(IMAGE_REPOSITORY):$(IMAGE_TAG)
 
-NVIDIA_CONTAINER_RUNTIME_VERSION ?= 3.12.0-1
 up:
 	k3d cluster start $(K3D_CLUSTER_NAME)
 
