@@ -73,8 +73,10 @@ cluster-delete: # Destroy the k3d clsuter
 	k3d cluster delete $(K3D_CLUSTER_NAME)
 
 registry-create: # Create the private image registry
+	mkdir -pv $(PWD)/data/registry
 	@( k3d registry ls k3d-$(K3D_REGISTRY_NAME) && echo "Registry already exists") \
 	|| k3d registry create $(K3D_REGISTRY_NAME) \
+	--volume $(PWD)/data/registry:/var/lib/registry \
 	--port $(K3D_REGISTRY_PORT)
 
 registry-delete: # Delete the private image registry
@@ -85,6 +87,9 @@ get-kubeconfig: # Write the k3d cluster kubeconfig to the local kubeconfig dir
 
 get-k9s: # Run k9s the kubernetes dashborad from cli
 	docker run --rm -it --network host -v $(KUBECONFIG):/root/.kube/config quay.io/derailed/k9s
+
+registry-exec: # Exec into the registry, for debug purposes
+	docker exec -it k3d-$(K3D_REGISTRY_NAME) /bin/sh
 
 cluster-exec-server: # Exec into the k3d master node, for debug purposes
 	docker exec -it k3d-$(K3D_CLUSTER_NAME)-server-0 /bin/bash
