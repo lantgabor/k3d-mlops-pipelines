@@ -1,4 +1,19 @@
-# Init
+# Testing MLOps pipelines using a local k3d cluster with Nvidia GPU support enabled
+
+The goal of this project is to create and test a reproducible MLOps pipeline using the currently available tools on a kubernetes cluster.
+
+For local development purposes I created this repo to use and deploy a [k3d](https://k3d.io/) cluster with Nvidia GPU support.
+
+## How to use
+
+Makefile holds all the install scripts for the cluster setup.
+
+Usage:
+
+1. Create local regisrty `make regisrtry-create`
+2. Build and push nvidia image for GPU support `make build-k3d-nvidia-image`
+3. Create the k3d cluster `make cluster-create`
+4. Start the k3d cluster `make up`
 
 ## Environment
 
@@ -50,6 +65,6 @@
 
    :warning: `Kustomize 5.0` has been fixed by #2399 Mar 13, 2023
 
-## Add ingress
+## Adding an ingress to access from the browser
 
 To reach the istio service gateway on localhost that forwards the traffic of the kubeflow gui we need to add an ingress to the cluster. By default k3d is configured with `traefik` ingress controller. [Exposing services](https://k3d.io/v5.4.6/usage/exposing_services/)
