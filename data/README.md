@@ -1,1 +1,1 @@
-Cache folder for containderd, kubelet, k3s-storage and the private registry
+Cache folder for containerd, kubelet, k3s-storage and the private registry
