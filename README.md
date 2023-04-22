@@ -10,7 +10,7 @@ Makefile holds all the install scripts for the cluster setup.
 
 Usage:
 
-1. Create local regisrty `make regisrtry-create`
+1. Create local regisrty `make registry-create`
 2. Build and push nvidia image for GPU support `make build-k3d-nvidia-image`
 3. Create the k3d cluster `make cluster-create`
 4. Start the k3d cluster `make up`
