@@ -1,15 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kubeflow-ingress
-  namespace: istio-system
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
+  namespace: istio-system
+  name: kubeflow-ingress
   labels:
-    name: kubeflow_ingress
+    name: kubeflow-ingress
 spec:
   rules:
-    - http:
+    - host: kf.localhost
+      http:
         paths:
           - path: /
             pathType: Prefix
