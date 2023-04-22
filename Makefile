@@ -93,3 +93,6 @@ registry-exec: # Exec into the registry, for debug purposes
 
 cluster-exec-server: # Exec into the k3d master node, for debug purposes
 	docker exec -it k3d-$(K3D_CLUSTER_NAME)-server-0 /bin/bash
+
+cluster-exec-agent: # Exec into the k3d worker node, for debug purposes
+	docker exec -it k3d-$(K3D_CLUSTER_NAME)-agent-0 /bin/bash
