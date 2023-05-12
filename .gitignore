@@ -119,6 +119,8 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+digits-recognizer-kubeflow/**
+
 # Environments
 .env
 .venv
