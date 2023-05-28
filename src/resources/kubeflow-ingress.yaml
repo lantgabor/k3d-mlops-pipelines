@@ -9,7 +9,7 @@ metadata:
     name: kubeflow-ingress
 spec:
   rules:
-    - host: kf.localhost
+    - host: kubeflow.172.18.0.3.nip.io
       http:
         paths:
           - path: /

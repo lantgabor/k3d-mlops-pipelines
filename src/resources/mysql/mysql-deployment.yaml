@@ -17,18 +17,34 @@ spec:
       containers:
         - image: mysql:5.6
           name: mysql
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 100Mi
           env:
+            - name: MYSQL_DATABASE
+              value: zenml
+            - name: MYSQL_USER
+              value: admin
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: admin
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
-                  key: password
+                  key: root
           ports:
             - containerPort: 3306
               name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
+              mountPath: /mnt/data
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:

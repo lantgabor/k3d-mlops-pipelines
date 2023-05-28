@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zenml-dev
+  namespace: zenml
+spec:
+  selector:
+    matchLabels:
+      app: zenml-dev
+  template:
+    metadata:
+      labels:
+        app: zenml-dev
+    spec:
+      containers:
+        - name: zenml-dev
+          image: lantgabor/zenml-dev:latest
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "2"

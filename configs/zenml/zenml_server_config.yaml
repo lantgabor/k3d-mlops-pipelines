@@ -1,0 +1,10 @@
+url: http://zenml.172.18.0.3.nip.io
+username: default
+password: zenml
+verify_ssl: false
+#  <Either a boolean, in which case it controls whether the
+#  server's TLS certificate is verified, or a string, in which case it
+#  must be a path to a CA certificate bundle to use or the CA bundle
+#  value itself>
+
+# zenml connect --config=/path/to/zenml_server_config.yaml

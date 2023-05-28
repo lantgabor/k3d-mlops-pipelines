@@ -9,7 +9,7 @@ metadata:
     name: minio-ingress
 spec:
   rules:
-    - host: minio.localhost
+    - host: minio.172.18.0.3.nip.io
       http:
         paths:
           - path: /

@@ -96,3 +96,7 @@ cluster-exec-server: # Exec into the k3d master node, for debug purposes
 
 cluster-exec-agent: # Exec into the k3d worker node, for debug purposes
 	docker exec -it k3d-$(K3D_CLUSTER_NAME)-agent-0 /bin/bash
+
+cluster-get-ip: # Get the cluster ip address
+	@docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq) | grep server-0 | cut -d' ' -f3
+
